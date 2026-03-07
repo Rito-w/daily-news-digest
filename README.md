@@ -2,6 +2,10 @@
 
 每日新闻摘要 - 中英双语版
 
+[English Version](README.en.md)
+
+---
+
 ## 🌐 网站
 
 **https://rito-w.github.io/daily-news-digest/**
