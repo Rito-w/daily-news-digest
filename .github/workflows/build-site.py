@@ -32,14 +32,21 @@ except Exception as e:
     news_en = "# No news yet\n\nNews will be generated daily"
 
 def md_to_html(md):
-    """简单 Markdown 转 HTML"""
+    """简单 Markdown 转 HTML - 支持简化格式"""
     html = md
+    # Headers
     html = re.sub(r'^# (.*$)', r'<h1>\1</h1>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.*$)', r'<h2>\1</h2>', html, flags=re.MULTILINE)
     html = re.sub(r'^### (.*$)', r'<h3>\1</h3>', html, flags=re.MULTILINE)
+    # Bold
     html = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html)
+    # Italic (来源时间)
+    html = re.sub(r'\*(.*?)\*', r'<em>\1</em>', html)
+    # Links
     html = re.sub(r'\[(.*?)\]\((.*?)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', html)
+    # Horizontal rule
     html = html.replace("---", "<hr>")
+    # Line breaks
     html = html.replace("\n\n", "</p><p>")
     return f"<p>{html}</p>"
 
