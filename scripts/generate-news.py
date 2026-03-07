@@ -180,8 +180,8 @@ def generate_markdown_en(articles, highlights):
     return md
 
 def update_index():
-    """更新网站首页链接"""
-    # 创建 latest.md 的软链接（用于网站加载）
+    """更新最新新闻链接"""
+    # 复制最新新闻到 latest.md（方便 GitHub 直接查看）
     latest_zh = NEWS_DIR / "latest.zh.md"
     latest_en = NEWS_DIR / "latest.en.md"
     
@@ -189,12 +189,10 @@ def update_index():
     today_en = NEWS_DIR / f"{DATE}.en.md"
     
     if today_zh.exists():
-        latest_zh.unlink(missing_ok=True)
-        latest_zh.symlink_to(f"{DATE}.zh.md")
+        latest_zh.write_text(today_zh.read_text(encoding="utf-8"), encoding="utf-8")
     
     if today_en.exists():
-        latest_en.unlink(missing_ok=True)
-        latest_en.symlink_to(f"{DATE}.en.md")
+        latest_en.write_text(today_en.read_text(encoding="utf-8"), encoding="utf-8")
 
 def main():
     print(f"\n{'='*50}")
