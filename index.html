@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News Digest - 每日新闻摘要</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 1.1em; }
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .lang-switch a {
+            background: white;
+            color: #667eea;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .lang-switch a.active {
+            background: #667eea;
+            color: white;
+        }
+        .news-list {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .news-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-item h3 {
+            margin-bottom: 10px;
+        }
+        .news-item h3 a {
+            color: #333;
+            text-decoration: none;
+        }
+        .news-item h3 a:hover {
+            color: #667eea;
+        }
+        .news-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .news-summary {
+            color: #444;
+            line-height: 1.8;
+        }
+        .highlights {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 10px 10px 0;
+        }
+        .highlights h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .highlights li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .highlights li:before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .date-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .date-nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 15px;
+            border: 1px solid #667eea;
+            border-radius: 5px;
+        }
+        .date-nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📰 Daily News Digest</h1>
+        <p>每日新闻摘要 · 中英双语版</p>
+    </header>
+
+    <div class="lang-switch">
+        <a href="index.html" class="active">中文</a>
+        <a href="index.en.html">English</a>
+    </div>
+
+    <div class="date-nav">
+        <a href="yesterday.zh.html">← 前一天</a>
+        <span id="current-date"></span>
+        <a href="#" id="next-link">后一天 →</a>
+    </div>
+
+    <div class="news-list">
+        <div class="highlights">
+            <h2>🔥 今日看点</h2>
+            <ul>
+                <li>AI 技术新突破：多个大模型更新发布</li>
+                <li>GitHub 热门项目：开发者工具持续走俏</li>
+                <li>科技行业动态：开源社区活跃</li>
+            </ul>
+        </div>
+
+        <div id="news-content">
+            <!-- 新闻内容将通过 JS 加载 -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Automatically generated · 自动生成</p>
+        <p>
+            <a href="https://github.com/Rito-w/daily-news-digest" target="_blank">GitHub</a> ·
+            更新时间：<span id="update-time"></span>
+        </p>
+    </footer>
+
+    <script>
+        // 设置当前日期
+        const today = new Date();
+        document.getElementById('current-date').textContent = 
+            today.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('update-time').textContent = 
+            today.toLocaleString('zh-CN');
+
+        // 加载新闻内容
+        fetch('latest.zh.md')
+            .then(r => r.text())
+            .then(md => {
+                // 简单 Markdown 解析
+                const html = md
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+                    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                    .replace(/\n/gim, '<br>');
+                document.getElementById('news-content').innerHTML = html;
+            })
+            .catch(e => console.error('加载新闻失败:', e));
+    </script>
+</body>
+</html>
