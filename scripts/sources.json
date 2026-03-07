@@ -1,0 +1,43 @@
+{
+  "weibo": {
+    "name": "微博热搜",
+    "type": "api",
+    "url": "https://weibo.com/ajax/side/hotSearch"
+  },
+  "zhihu": {
+    "name": "知乎热榜",
+    "type": "api",
+    "url": "https://www.zhihu.com/api/v3/feed/topstory/hot-list"
+  },
+  "github": {
+    "name": "GitHub Trending",
+    "type": "api",
+    "url": "https://github-trends-api.vercel.app/weekly"
+  },
+  "tech": [
+    {
+      "name": "Simon Willison",
+      "url": "https://simonwillison.net/atom/everything/"
+    },
+    {
+      "name": "Hacker News",
+      "url": "https://hnrss.org/frontpage"
+    },
+    {
+      "name": "Paul Graham",
+      "url": "http://www.aaronsw.com/2002/feeds/pgessays.rss"
+    }
+  ],
+  "finance": [
+    {
+      "name": "华尔街见闻",
+      "url": "https://wallstreetcn.com/feed"
+    }
+  ],
+  "gaming": [
+    {
+      "name": "IGN",
+      "url": "https://www.ign.com/feed/rss"
+    }
+  ]
+}
