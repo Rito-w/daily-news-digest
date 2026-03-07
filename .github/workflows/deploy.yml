@@ -4,7 +4,6 @@ on:
   push:
     branches: [master]
     paths:
-      - 'website/**'
       - 'news/**'
   workflow_dispatch:
 
