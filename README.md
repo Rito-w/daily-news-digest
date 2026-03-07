@@ -13,23 +13,9 @@
 
 每天上午 9:05（北京时间）自动更新
 
-## 📊 工作流程
-
-1. **Cron 任务**（本地 Mac）→ 调用 AI 生成新闻 → 推送到 GitHub
-2. **GitHub Actions** → 检测到 news 变更 → 构建网站 → 部署到 Pages
-
 ## 📁 目录
 
 - [news/](news/) - 每日新闻 Markdown 文件
-- [website/](website/) - 生成的 HTML（自动构建）
-
-## 🛠️ 手动触发
-
-```bash
-# 本地测试（可选）
-cd /Volumes/myDisk/workplace/daily-news-digest
-# Cron 任务会自动运行，无需手动执行
-```
 
 ---
 
