@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Daily Digest - 每日技术新闻</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { opacity: 0.95; font-size: 1.1em; }
+        .update-info {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .news-list {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .news-list h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-item:hover { background: #f8f9ff; }
+        .news-info h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        .news-meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .news-meta span { margin-right: 15px; }
+        .view-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .today-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 600px) {
+            header { padding: 25px; }
+            header h1 { font-size: 1.8em; }
+            .news-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .view-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📰 Tech Daily Digest</h1>
+            <p>每日技术新闻精选 · AI · 开发者工具 · 开源项目</p>
+            <div class="update-info">
+                🕐 每日上午 9:05 自动更新（北京时间）
+            </div>
+        </header>
+
+        <div class="news-list">
+            <h2>📅 最近 7 天新闻</h2>
+            
+            <div class="news-item">
+                <div class="news-info">
+                    <h3>2026 年 3 月 8 日 <span class="today-badge">今日</span></h3>
+                    <div class="news-meta">
+                        <span>📄 7 篇文章</span>
+                        <span>📡 88 个 RSS 源</span>
+                    </div>
+                </div>
+                <a href="news/2026-03-08/index.html" class="view-btn">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-info">
+                    <h3>2026 年 3 月 7 日</h3>
+                    <div class="news-meta">
+                        <span>📄 查看历史归档</span>
+                        <span>📡 RSS 源</span>
+                    </div>
+                </div>
+                <a href="news/2026-03-07.zh.md" class="view-btn">查看详情 →</a>
+            </div>
+
+            <div class="news-item">
+                <div class="news-info">
+                    <h3>更多历史新闻</h3>
+                    <div class="news-meta">
+                        <span>📚 查看完整归档</span>
+                    </div>
+                </div>
+                <a href="news/HISTORY.md" class="view-btn">查看历史 →</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated by <a href="https://github.com/openclaw/openclaw">AI Daily Digest</a></p>
+            <p style="margin-top: 10px;">
+                <a href="https://rito-w.github.io/daily-news-digest/">GitHub Pages</a> · 
+                <a href="https://github.com/rito-w/daily-news-digest">Source Code</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
